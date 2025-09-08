@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+    const quiz = [
+    {
+        pergunta: "1. O que significa HTML?",
+        alternativas: {
+        A: "Hyper Trainer Marking Language",
+        B: "HyperText Markup Language",
+        C: "HyperText Machine Language"
+    },
+        correta: "B"
+    },
+    {
+        pergunta: "2. Qual desses é um tipo de dado primitivo em JavaScript?",
+        alternativas: {
+        A: "Array",
+        B: "Object",
+        C: "String"
+        },
+        correta: "C"
+    },
+    {
+        pergunta: "3. Qual comando usamos para repetir um bloco de código enquanto uma condição for verdadeira?",
+        alternativas: {
+        A: "while",
+        B: "forEach",
+        C: "switch"
+        },
+        correta: "A"
+    },
+    {
+        pergunta: "4. Qual símbolo é usado para comentários de uma linha em JavaScript?",
+        alternativas: {
+          A: "/* comentário */",
+        B: "<!-- comentário -->",
+        C: "// comentário"
+        },
+        correta: "C"
+    }
+    ];
+
+    let pontuacao = 0;
+    let gabaritoUsuario = [];
+
+    for (let i = 0; i < quiz.length; i++) {
+      const q = quiz[i];
+
+      let resposta = prompt(
+        `${q.pergunta}\n` +
+        `A) ${q.alternativas.A}\n` +
+        `B) ${q.alternativas.B}\n` +
+        `C) ${q.alternativas.C}\n\n` +
+        `Digite A, B ou C:`
+      );
+
+      resposta = resposta ? resposta.toUpperCase() : "";
+
+      if (resposta === q.correta) {
+        alert("✅ Resposta correta!");
+        pontuacao++;
+      } else {
+        alert("❌ Resposta incorreta!");
+      }
+
+      gabaritoUsuario.push({
+        pergunta: q.pergunta,
+        suaResposta: resposta,
+        correta: q.correta
+      });
+    }
+
+    console.clear();
+    console.log("🎯 Resultado Final:");
+    console.log(`Você acertou ${pontuacao} de ${quiz.length} perguntas.\n`);
+
+    console.log("📘 Gabarito:");
+    gabaritoUsuario.forEach((res, index) => {
+      console.log(`${index + 1}. ${res.pergunta}`);
+      console.log(`   Sua resposta: ${res.suaResposta}`);
+      console.log(`   Resposta correta: ${res.correta}\n`);
+    });
+  </script>
+    </body>
+</html>
